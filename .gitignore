@@ -1,4 +1,4 @@
-public/javascripts
+public/javascripts/*
 node_modules
 bower_components
 *.swp

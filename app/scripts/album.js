@@ -71,6 +71,7 @@
    }
  
  };
+
  // This 'if' condition is used to prevent the jQuery modifications
  // from happening on non-Album view pages.
  //  - Use a regex to validate that the url has "/album" in its path.
@@ -78,6 +79,17 @@
    // Wait until the HTML is fully processed.
    $(document).ready(function() {
       changeAlbumView(albumPicasso);
-    });
+        // Click on second-album
+        $('#marconi-album').click(function()
+        {
+          changeAlbumView(albumMarconi);
+        });
+        $('#picasso-album').click(function()
+        {
+          changeAlbumView(albumPicasso);
+        });
+      });
+
+
    };
  
