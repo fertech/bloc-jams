@@ -46,7 +46,7 @@
   .album-song-button {
     text-align: center;
     font-size: 14px;
-    background-color: white;
+    background-color: $white;
     color: #d2287b;
     border-radius: 50% 50%;
     display: inline-block;
@@ -55,7 +55,7 @@
 
     &:hover {
       cursor: pointer;
-      color: white;
+      color: $white;
       background-color: #d2287b;
     }
     i {
