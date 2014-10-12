@@ -144,7 +144,7 @@ td.song-number {
   .player-bar .play-controls .play-pause {
     margin-right: 60px;
     font-size: 30px; }
-  .player-bar .play-controls:hover {
+  .player-bar .play-controls a:hover {
     opacity: 0.4; }
   .player-bar .currently-playing {
     width: 50%;

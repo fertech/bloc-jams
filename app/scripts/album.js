@@ -118,6 +118,49 @@
   }
 
 };
+  // Update seek bar
+  var updateSeekPercentage = function($seekBar, event) {
+    var barWidth = $seekBar.width();
+    var offsetX = event.pageX - $seekBar.offset().left;
+ 
+    var offsetXPercent = (offsetX  / barWidth) * 100;
+    offsetXPercent = Math.max(0, offsetXPercent);
+    offsetXPercent = Math.min(100, offsetXPercent);
+ 
+    console.log('x: '+ event.pageX + ' - y: ' + event.pageY);
+    var percentageString = offsetXPercent + '%';
+    $seekBar.find('.fill').width(percentageString);
+    $seekBar.find('.thumb').css({left: percentageString});
+  };
+
+  // click event
+  var setupSeekBars = function() {
+
+    $seekBars = $('.player-bar .seek-bar');
+    $seekBars.click(function(event) {
+      updateSeekPercentage($(this), event);
+    });
+
+    $seekBars.find('.thumb').mousedown(function(event){
+      var $seekBar = $(this).parent();
+      $seekBar.addClass('no-animate');
+
+      $(document).bind('mousemove.thumb', function(event){
+      updateSeekPercentage($seekBar, event);
+    });
+ 
+    //cleanup
+    $(document).bind('mouseup.thumb', function(){
+      $seekBar.removeClass('no-animate');
+      $(document).unbind('mousemove.thumb mouseup.thumb');
+      //$(document).unbind('mouseup.thumb');
+    });
+ 
+  });
+  };
+
+  
+
 
   // This 'if' condition is used to prevent the jQuery modifications
   // from happening on non-Album view pages.
@@ -126,6 +169,7 @@
     // Wait until the HTML is fully processed.
       $(document).ready(function() {
       changeAlbumView(albumPicasso);
+      setupSeekBars();
     });
   };
    
