@@ -67,6 +67,9 @@ td.song-number {
   height: 70px;
   text-align: center; }
 
+.odd {
+  background-color: rgba(123, 70, 163, 0.7); }
+
 .collection-album-container {
   margin-top: 30px;
   margin-bottom: 20px; }
@@ -317,18 +320,6 @@ body.landing .navbar {
 
 .player-header-nav {
   background-color: rgba(123, 70, 163, 0.9); }
-  .navbar-nav {
-    a {
-      line-height: 45px;
-      color: white;
-      text-transform: uppercase;
-      font-weight: 700;
-      letter-spacing: 1.2;
- 
-      &:hover {
-         color: rgba(123, 70, 163, .9);
-      }
-    }
-  }
+
 
 /*# sourceMappingURL=app.css.map*/
