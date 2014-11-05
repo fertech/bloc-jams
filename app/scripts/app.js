@@ -100,7 +100,7 @@ blocJams.config(['$stateProvider', '$locationProvider', function($stateProvider,
    }
   }]);
 
-  blocJams.controller('Album.controller', ['$scope' 'SongPlayer', function($scope, SongPlayer) {
+  blocJams.controller('Album.controller', ['$scope', 'SongPlayer', function($scope, SongPlayer) {
     $scope.album = angular.copy(albumPicasso);
 
     var hoveredSong = null;
