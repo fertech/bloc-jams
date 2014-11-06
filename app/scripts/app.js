@@ -66,9 +66,17 @@ blocJams.config(['$stateProvider', '$locationProvider', function($stateProvider,
       }
     };
   });
- 
-  blocJams.controller('Landing.controller', ['$scope', function($scope) {
 
+  blocJams.service('ConsoleLogger', function() {
+    return {
+      log: function(string){
+        console.log(string);
+      }
+    } 
+  });
+ 
+  blocJams.controller('Landing.controller', ['$scope',function($scope) {
+    
     $scope.subText = "Turn the music up!";
 
     $scope.subTextClicked = function() {
@@ -93,16 +101,20 @@ blocJams.config(['$stateProvider', '$locationProvider', function($stateProvider,
     };
   }]);
 
-  blocJams.controller('Collection.controller', ['$scope', function($scope) {
+  blocJams.controller('Collection.controller', ['$scope', 'ConsoleLogger', function($scope, ConsoleLogger) {
     $scope.albums = [];
     for (var i = 0; i < 33; i++) {
      $scope.albums.push(angular.copy(albumPicasso));
    }
+   ConsoleLogger.log();
   }]);
 
-  blocJams.controller('Album.controller', ['$scope', 'SongPlayer', function($scope, SongPlayer) {
-    $scope.album = angular.copy(albumPicasso);
 
+  blocJams.controller('Album.controller', ['$scope', 'SongPlayer', 'ConsoleLogger', function($scope, SongPlayer, ConsoleLogger) {
+    $scope.album = angular.copy(albumPicasso);
+    $scope.consoleLogger;
+    // ConsoleLogger.log($scope.consoleLogger);
+    // ConsoleLogger.log();
     var hoveredSong = null;
  
     $scope.onHoverSong = function(song) {
@@ -133,8 +145,9 @@ blocJams.config(['$stateProvider', '$locationProvider', function($stateProvider,
     };
   }]);
 
-  blocJams.controller('PlayerBar.controller', ['$scope', 'SongPlayer', function($scope, SongPlayer) {
+  blocJams.controller('PlayerBar.controller', ['$scope', 'SongPlayer', 'ConsoleLogger',function($scope, SongPlayer, ConsoleLogger) {
     $scope.songPlayer = SongPlayer;
+    ConsoleLogger.log();
    }]);
  
  
