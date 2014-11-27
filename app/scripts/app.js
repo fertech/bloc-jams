@@ -159,6 +159,9 @@ blocJams.config(['$stateProvider', '$locationProvider', function($stateProvider,
      }
      return 'default';
    };
+    $scope.playSong = function(song) {    
+      SongPlayer.setSong($scope.album, song);    
+   };
  
     $scope.pauseSong = function(song) {
       SongPlayer.pause();
